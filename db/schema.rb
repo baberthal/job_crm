@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150821234112) do
     t.datetime "updated_at",       null: false
     t.datetime "last_touch"
     t.datetime "application_sent"
+    t.string   "position_name"
   end
 
   add_index "jobs", ["company_name"], name: "index_jobs_on_company_name", using: :btree
