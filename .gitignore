@@ -87,3 +87,4 @@ config/secrets.yml
 .powenv
 
 spec/rubocop.html
+coverage
