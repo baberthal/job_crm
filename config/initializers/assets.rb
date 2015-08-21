@@ -5,7 +5,7 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.root.join('vendor', 'assets', 'bower_components').to_s.tap do |bower_path|
   Rails.application.config.sass.load_paths << bower_path
-  Rails.application.confi.assets.paths << bower_path
+  Rails.application.config.assets.paths << bower_path
 end
 
 twbs = %r{bootstrap-sass/assets/fonts/bootstrap/[\w-]+\.(?:eot|svg|ttf|woff2?)$}
