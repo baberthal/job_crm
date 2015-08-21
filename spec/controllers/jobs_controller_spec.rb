@@ -23,9 +23,10 @@ RSpec.describe JobsController, type: :controller do
   describe 'get #show' do
     before :each do
       4.times { create(:job) }
-      id = Job.last.id
-      get :show, id: id
+      get :show, id: Job.last.id
     end
+
+    let(:job) { Job.last }
 
     it 'returns status 200' do
       expect(response.status).to eq 200
@@ -33,6 +34,10 @@ RSpec.describe JobsController, type: :controller do
 
     it 'renders the show template' do
       expect(response).to render_template 'show'
+    end
+
+    it 'loads the correct job into jobs' do
+      expect(assigns(:job)).to eq job
     end
   end
 end
