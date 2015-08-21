@@ -17,6 +17,7 @@ gem 'pg_search'
 gem 'puma'
 gem 'haml'
 gem 'haml-rails'
+gem 'psych'
 
 group :development, :test do
   gem 'byebug'
