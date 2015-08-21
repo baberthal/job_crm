@@ -1,6 +1,7 @@
 Documentation:
   Enabled: false
 AllCops:
+  RunRailsCops: true
   Include:
     - '**/config.ru'
   Exclude:
