@@ -6,4 +6,12 @@ class JobsController < ApplicationController
       format.html
     end
   end
+
+  def show
+    @job = Job.find(params[:id])
+
+    respond_to do |format|
+      format.html
+    end
+  end
 end
