@@ -23,7 +23,8 @@ RSpec.describe JobsController, type: :controller do
   describe 'get #show' do
     before :each do
       4.times { create(:job) }
-      get :show, id: 1
+      id = Job.last.id
+      get :show, id: id
     end
 
     it 'returns status 200' do
