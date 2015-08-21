@@ -1,0 +1,11 @@
+Documentation:
+  Enabled: false
+AllCops:
+  Include:
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**'
+    - 'spec/teaspoon_env.rb'
+    - 'node_modules/**/*'
+    - 'config/initializers/devise.rb'
