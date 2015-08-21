@@ -1,4 +1,25 @@
-%ul
-  - @jobs.each do |job|
-    %li
-      = job.company_name
+.row
+  .col-sm-12
+    %h1.text-center
+      My Jobs
+
+.row
+  .col-sm-12
+    %table.table.table-striped
+      %thead
+        %th Company Name
+        %th Application Sent
+        %th Last Touch
+        %th Action
+      %tbody
+        - @jobs.each do |job|
+          %tr
+            %td
+              = job.company_name
+            %td
+              = job.application_sent
+            %td
+              = job.last_touch
+            %td
+              = link_to 'View', job, class: 'btn btn-primary btn-xs'
+
