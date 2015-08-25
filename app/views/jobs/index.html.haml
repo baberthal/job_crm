@@ -8,6 +8,7 @@
     %table.table.table-striped
       %thead
         %th Company Name
+        %th Position
         %th Application Sent
         %th Last Touch
         %th Action
@@ -16,6 +17,8 @@
           %tr
             %td
               = job.company_name
+            %td
+              = job.position_name
             %td
               = job.application_sent
             %td
