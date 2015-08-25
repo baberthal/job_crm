@@ -1,5 +1,5 @@
 [Job, Contact, Company].each do |model|
-  p "Destroying #{model.count} #{pluralize(model.count, model.to_s}"
+  p "Destroying #{model.count} #{model.to_s.pluralize}"
   model.destroy_all
 end
 
@@ -16,10 +16,13 @@ end
               application_sent: 5.minutes.ago,
               last_touch: 4.minutes.ago)
 
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+
   Contact.create!(company: Company.last,
                   salutation: Faker::Name.prefix,
-                  first_name: Faker::Name.first_name,
-                  last_name: Faker::Name.last_name,
+                  first_name: first_name,
+                  last_name: last_name,
                   title: Faker::Name.title,
                   main_phone: Faker::PhoneNumber.phone_number,
                   second_phone: Faker::PhoneNumber.cell_phone,
