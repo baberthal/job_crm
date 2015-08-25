@@ -22,19 +22,19 @@ class CompaniesController < ApplicationController
 
   # POST /companies
   def create
-    @company = Company.new(params[:company])
+    @company = Company.new(company_params)
 
     if @company.save
       flash[:notice] = 'Model was successfully created.'
       redirect_to(@company)
     else
-      format.html { render action: 'new' }
+      render action: 'new'
     end
   end
 
   # PUT /companies/1
   def update
-    if @company.update_attributes(params[:company])
+    if @company.update_attributes(company_params)
       flash[:notice] = 'Model was successfully updated.'
       redirect_to(@company)
     else
@@ -46,12 +46,26 @@ class CompaniesController < ApplicationController
   # DELETE /companys/1.xml
   def destroy
     @company.destroy
-    redirect_to(companys_url)
+    redirect_to(companies_url)
   end
 
   private
 
   def find_company
     @company = Company.find(params[:id])
+  end
+
+  def company_params
+    params.require(:company).permit(
+      :name,
+      :street_address,
+      :street_address_2,
+      :city,
+      :state,
+      :postal_code,
+      :main_phone,
+      :second_phone,
+      :fax
+    )
   end
 end
