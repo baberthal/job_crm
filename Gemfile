@@ -18,6 +18,7 @@ gem 'puma'
 gem 'haml'
 gem 'haml-rails'
 gem 'psych'
+gem 'draper'
 
 group :development, :test do
   gem 'byebug'
@@ -41,5 +42,6 @@ group :development, :test do
   gem 'poltergeist'
   gem 'simplecov', require: false
   gem 'rubocop', require: false
+  gem 'rubocop-rspec'
   gem 'faker'
 end
