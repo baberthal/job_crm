@@ -9,12 +9,32 @@
       .panel-heading
         %h3.panel-title
           General Info
+      .panel-body
+        %address.text-center
+          = @company.full_address
+          %br
+          = @company.city_state_zip
+          %br
+          %abbr{ title: 'Phone'} P:
+          = @company.phone
 
-      %br
-      %address.text-center
-        = @company.full_address
-        %br
-        = @company.city_state_zip
-        %br
-        %abbr{ title: 'Phone'} P:
-        = @company.phone
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          Contacts
+      .list-group
+        - @company.contacts.each do |contact|
+          - contact = contact.decorate
+          = link_to contact.list_group_info, contact, class: 'list-group-item'
+
+  .col-sm-12.col-md-8
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title
+          Jobs
+      .list-group
+        - @company.jobs.each do |job|
+          - job = job.decorate
+          = link_to job.title, job, class: 'list-group-item'
+
+
