@@ -10,6 +10,12 @@ FactoryGirl.define do
       postal_code { Faker::Address.postcode }
     end
 
+    trait :with_all_phones do
+      main_phone { Faker::PhoneNumber.phone_number }
+      second_phone { Faker::PhoneNumber.phone_number }
+    end
+
     factory :company_with_address, traits: [:with_address]
+    factory :company_with_info, traits: [:with_address, :with_all_phones]
   end
 end
