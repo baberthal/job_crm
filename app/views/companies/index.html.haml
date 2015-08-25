@@ -1,0 +1,25 @@
+.row
+  .col-sm-12
+    %h1.text-center
+      My Jobs
+
+.row
+  .col-sm-12
+    %table.table.table-striped.table-bordered
+      %thead
+        %th Company Name
+        %th Job Count
+        %th First Contact
+        %th Action
+      %tbody
+        - @companies.each do |company|
+          %tr
+            %td
+              = company.company_name
+            %td
+              = company.jobs.count
+            %td
+              = company.contacts.first
+            %td
+              = render 'shared/action_button_group'
+
