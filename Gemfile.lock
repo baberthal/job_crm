@@ -106,6 +106,9 @@ GEM
       em-websocket (~> 0.5)
       guard (~> 2.8)
       multi_json (~> 1.8)
+    guard-rake (1.0.0)
+      guard
+      rake
     guard-rspec (4.6.4)
       guard (~> 2.1)
       guard-compat (~> 1.1)
@@ -318,6 +321,7 @@ DEPENDENCIES
   faker
   guard-bundler
   guard-livereload
+  guard-rake
   guard-rspec
   guard-rubocop
   haml

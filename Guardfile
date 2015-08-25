@@ -88,3 +88,9 @@ group :red_green_refactor, halt_on_fail: true do
   end
 
 end
+
+guard 'rake', :task => 'factory_girl:lint' do
+  watch(%r{^spec/factories/(.+).rb})
+end
+
+#  vim: set ts=8 sw=2 tw=0 ft=ruby et :

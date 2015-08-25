@@ -34,6 +34,7 @@ group :development, :test do
   gem 'guard-livereload', require: false
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
+  gem 'guard-rake', require: false
   gem 'ruby_gntp'
   gem 'capybara'
   gem 'database_cleaner'
