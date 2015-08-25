@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   def index
-    @jobs = Job.all
+    @jobs = JobDecorator.decorate_collection(Job.all)
 
     respond_to do |format|
       format.html
