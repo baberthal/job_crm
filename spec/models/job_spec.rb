@@ -8,7 +8,7 @@ RSpec.describe Job, type: :model do
   end
 
   it 'is invalid without valid attributes' do
-    job.company_name = nil
+    job.company = nil
     expect(job).to_not be_valid
   end
 end
