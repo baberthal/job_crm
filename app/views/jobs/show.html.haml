@@ -1,5 +1,29 @@
 .row
   .col-sm-12
-    %h1
-      = @job.company_name
+    %h1.text-center
+      = @job.company.name
+      %small
+        = @job.title
 
+.row
+  .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-0
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          Contact Log
+      %table.table.table-striped.table-hover
+        %thead
+          %th.text-left Contact Person
+          %th.text-center Contact Type
+          %th.text-right Date &amp; Time
+        %tbody
+          - @job.contact_events.each do |event|
+            %tr
+              %td.text-left
+                = event.contact.decorate.name
+              %td.text-center
+                Phone Call
+              %td.text-right
+                = event.contact_time
+      .panel-footer
+        %button.btn.btn-primary.btn-block{type: 'button'} Log an Event

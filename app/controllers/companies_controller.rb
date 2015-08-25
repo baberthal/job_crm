@@ -65,7 +65,6 @@ class CompaniesController < ApplicationController
       :postal_code,
       :main_phone,
       :second_phone,
-      :fax
-    )
+      :fax)
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825045628) do
+ActiveRecord::Schema.define(version: 20150825085118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,21 @@ ActiveRecord::Schema.define(version: 20150825045628) do
 
   add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
   add_index "companies", ["street_address", "street_address_2", "city", "state", "postal_code"], name: "by_address", unique: true, using: :btree
+
+  create_table "contact_events", force: :cascade do |t|
+    t.datetime "contact_time",     null: false
+    t.integer  "job_id"
+    t.integer  "contactable_id"
+    t.string   "contactable_type"
+    t.string   "event_type"
+    t.text     "notes"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "contact_events", ["contactable_type", "contactable_id"], name: "index_contact_events_on_contactable_type_and_contactable_id", using: :btree
+  add_index "contact_events", ["event_type"], name: "index_contact_events_on_event_type", using: :btree
+  add_index "contact_events", ["job_id"], name: "index_contact_events_on_job_id", using: :btree
 
   create_table "contacts", force: :cascade do |t|
     t.string   "salutation"

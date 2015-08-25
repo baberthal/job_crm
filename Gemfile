@@ -28,7 +28,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'pry-theme'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', require: false
   gem 'rb-fsevent', require: false
   gem 'guard-rspec', require: false
   gem 'guard-livereload', require: false

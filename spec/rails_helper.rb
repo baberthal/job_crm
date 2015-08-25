@@ -10,12 +10,13 @@ require 'capybara/poltergeist'
 require 'faker'
 
 def zeus_running?
-  File.exist? 'zeus.sock'
+  File.exist? '.zeus.sock'
 end
 
 unless zeus_running?
   require 'simplecov'
   SimpleCov.start 'rails'
+  FactoryGirl.find_definitions
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 end
 
