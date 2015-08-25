@@ -1,5 +1,5 @@
 .btn-group.btn-group-xs{ role: 'group', 'aria-label': 'action button group' }
   = link_to object, class: 'btn btn-default' do
     %span.glyphicon.glyphicon-eye-open
-  = link_to object.delete, class: 'btn btn-danger' do
+  = link_to object, method: :delete, class: 'btn btn-danger' do
     %span.glyphicon.glyphicon-remove-circle
