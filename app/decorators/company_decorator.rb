@@ -8,7 +8,7 @@ class CompanyDecorator < Draper::Decorator
 
   def city_state_zip
     return unless object.city && object.state && object.postal_code
-    "#{object.city}, #{object.state}, #{object.postal_code}"
+    "#{object.city}, #{object.state}, #{object.postal_code[0..4]}"
   end
 
   def phone
