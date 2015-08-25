@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825043640) do
+ActiveRecord::Schema.define(version: 20150825045628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 20150825043640) do
     t.string   "postal_code",      limit: 12
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "main_phone"
+    t.string   "second_phone"
+    t.string   "fax"
   end
 
   add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
