@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe JobsController, type: :controller do
+  before :each do
+    4.times { create(:job) }
+  end
+
   describe 'get #index' do
     before :each do
       get :index
-      4.times { create(:job) }
     end
 
     it 'returns status 200' do
@@ -22,7 +25,6 @@ RSpec.describe JobsController, type: :controller do
 
   describe 'get #show' do
     before :each do
-      4.times { create(:job) }
       get :show, id: Job.last.id
     end
 
@@ -38,6 +40,18 @@ RSpec.describe JobsController, type: :controller do
 
     it 'loads the correct job into jobs' do
       expect(assigns(:job)).to eq job
+    end
+  end
+
+  describe '#destroy' do
+    let(:job) { Job.last }
+
+    before :each do
+      post :destroy, id: job.id
+    end
+
+    it 'posts delete and the job is destroyed' do
+      expect(Job.find_by(id: job.id)).to be_nil
     end
   end
 end
