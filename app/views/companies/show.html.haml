@@ -1,0 +1,16 @@
+.row
+  .col-sm-12
+    %h1.text-center
+      = @company.name
+
+.row
+  .col-sm-12.col-md-6
+    %h2.text-center General Info
+    %table.table.table-striped.table-hover
+      %address
+        = @company.full_address
+        %br
+        = @company.city_state_zip
+        %br
+        %abbr{ title: 'Phone'} P:
+        = @company.phone
