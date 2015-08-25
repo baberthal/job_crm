@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825032716) do
+ActiveRecord::Schema.define(version: 20150825043640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,14 +49,15 @@ ActiveRecord::Schema.define(version: 20150825032716) do
   add_index "contacts", ["main_phone"], name: "index_contacts_on_main_phone", using: :btree
 
   create_table "jobs", force: :cascade do |t|
-    t.string   "company_name",     null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.datetime "last_touch"
     t.datetime "application_sent"
     t.string   "position_name"
+    t.integer  "company_id"
   end
 
-  add_index "jobs", ["company_name"], name: "index_jobs_on_company_name", using: :btree
+  add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
 
+  add_foreign_key "jobs", "companies"
 end
