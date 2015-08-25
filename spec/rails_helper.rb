@@ -29,22 +29,19 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
-    begin
-      DatabaseCleaner.start
-      FactoryGirl.lint
-    ensure
-      DatabaseCleaner.clean
-    end
   end
 
   config.before(:all) { DeferredGarbageCollection.start }
   config.after(:all) { DeferredGarbageCollection.reconsider }
 
-  config.around(:each, type: :feature, js: true) do |example|
-    DatabaseCleaner.strategy = :truncation
+  config.around(:each) do |ex|
+    if ex.metadata[:js]
+      DatabaseCleaner.strategy = :truncation
+      self.use_transactional_fixtures = false
+    end
+
     DatabaseCleaner.start
-    self.use_transactional_fixtures = false
-    example.run
+    ex.run
     self.use_transactional_fixtures = true
     DatabaseCleaner.clean
   end
